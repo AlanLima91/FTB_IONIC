@@ -30,6 +30,16 @@ export class AppComponent {
       url: '/basket',
       icon: 'basket'
     },
+    {
+      title:  'Administration',
+      url:    '/administration',
+      icon:   'paper'
+    },
+    {
+      title:  'Connexion',
+      url:    '/signin',
+      icon:   'log-in'
+    },
   ];
 
   constructor(
