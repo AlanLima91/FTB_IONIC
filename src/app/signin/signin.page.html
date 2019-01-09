@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title color=success>
       Connexion
     </ion-title>
   </ion-toolbar>
@@ -14,25 +14,31 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <ion-row>
         <ion-col col-12>
-          <ion-item margin>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" name="email" required></ion-input>
-          </ion-item>
+          <ion-card margin>
+            <ion-card-content>
+              <ion-item><!-- sans le ion-item, impossible d'avoir l'effet floating -->
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" name="email" required></ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-item margin>
-            <ion-label position="floating">Mot de passe</ion-label>
-            <ion-input type="password" name="password" clear-on-edit required></ion-input>
-          </ion-item>
+          <ion-card margin>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Mot de passe</ion-label>
+                <ion-input type="password" name="password" clear-on-edit required></ion-input>
+             </ion-item>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <ion-item margin>
-            <ion-button text-uppercase size=large fill=outline expand=block type=submit>Connexion</ion-button>
-          </ion-item>
+          <ion-button text-uppercase size=large fill=outline expand=block type=submit>Connexion</ion-button>
         </ion-col>
       </ion-row>
     </form>
