@@ -9,35 +9,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid fixed>
-
-    <!-- First part of the page (information)-->
-    <ion-row color="bg-green">
-      <h2>Informations</h2>
-    </ion-row>
     <ion-row>
-      <h3>{{ user.?firstname }}</h3>
+      <!-- First part of the page (information)-->
+      <ion-card color=success margin>
+        <ion-card-header>
+          <ion-card-title text-center>
+            <h2 text-uppercase>Informations</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>{{ user?.firstname }}Firstname</h3>
+          <h3>{{ user?.name }}Name</h3>
+          <form>
+            <ion-item>
+              <ion-label position="floating">{{ user?.email }}</ion-label>
+              <ion-input type="email" name="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input type="password" name="password" required></ion-input>
+            </ion-item>
+          </form>
+        </ion-card-content>
+      </ion-card>
+      <!-- Second part of the page (previous order)-->
     </ion-row>
-    <ion-row>
-      <h3>{{ user.?name }}</h3>
-    </ion-row>
-    <ion-row>
-      <form>
-        <ion-col col-12>
-          <ion-label position="floating">{{ user?.email }}</ion-label>
-          <ion-input type="email" name="email" required></ion-input>
-        </ion-col>
-        <ion-col col-12>
-          <ion-label position="floating">Mot de passe</ion-label>
-          <ion-input type="password" name="password" required></ion-input>
-        </ion-col>
-      </form>
-    </ion-row>
-
-  <!-- Second part of the page (previous order)-->
-  <ion-row padding>
-
-  </ion-row>
   </ion-grid>
 </ion-content>

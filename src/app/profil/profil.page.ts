@@ -19,7 +19,15 @@ export class ProfilPage implements OnInit {
 
   ngOnInit() {
     // Allow us to by default charge an example user. 
-    this.user = this.userService.getUserByKey("-LT7EJHxqq4Zycn7lX36")[0];
+    // let order: Order = new Order(null,null, 5, new Date());
+    // let user: User = new User("NameTest", "FirstNameTest", "EmailTest", "PasswordTest", 24, null);
+    // user.order = [];
+    // user.order[0] = order;
+    // this.userService.addUser(user).subscribe(data => {
+    //   console.log(Object);
+    // });
+    // console.log("after call function addUser");
+    this.user = this.userService.getUserByKey("-LVoG7cVVNrswqyHgM1q")[0];
     this.getOrders();
   }
 
