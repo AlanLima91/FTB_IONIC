@@ -11,13 +11,33 @@
 
 <ion-content padding>
   <ion-grid fixed>
-    <ion-row>
-      <ion-col col-6>
-        1
-      </ion-col>
-      <ion-col col-6>
-        2
-      </ion-col>
+
+    <!-- First part of the page (information)-->
+    <ion-row color="bg-green">
+      <h2>Informations</h2>
     </ion-row>
+    <ion-row>
+      <h3>{{ user.?firstname }}</h3>
+    </ion-row>
+    <ion-row>
+      <h3>{{ user.?name }}</h3>
+    </ion-row>
+    <ion-row>
+      <form>
+        <ion-col col-12>
+          <ion-label position="floating">{{ user?.email }}</ion-label>
+          <ion-input type="email" name="email" required></ion-input>
+        </ion-col>
+        <ion-col col-12>
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input type="password" name="password" required></ion-input>
+        </ion-col>
+      </form>
+    </ion-row>
+
+  <!-- Second part of the page (previous order)-->
+  <ion-row padding>
+
+  </ion-row>
   </ion-grid>
 </ion-content>
