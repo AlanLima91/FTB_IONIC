@@ -16,7 +16,7 @@ export class UserService {
    *  return a table of user
    */
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://fronttoback-2c84a.firebaseio.com/users.json')
+    return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users.json')
       .pipe(
         tap(data => {
           data
@@ -30,10 +30,24 @@ export class UserService {
    *  return a user
    */
   getUserByKey(key: string): Observable<User[]> {
-    return this.http.get<User[]>('https://fronttoback-2c84a.firebaseio.com/users/' + key + '.json')
+    return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json')
       .pipe(
         tap(data => data),
         catchError(this.handleError('getUserByKey', []))
+      );
+  }
+
+  /**
+   *  Add a new User to the table
+   *  @param User
+   */
+  addUser(user: User): Observable<User>
+  {
+    let url = `https://fronttoback-9bb02.firebaseio.com/users.json`;
+    console.log("in addUser method");
+    return this.http.post<User>(url, user, {responseType: 'json'}).pipe(
+        tap((product: User) => console.log('User Added')),
+        catchError(this.handleError<User>('addUser')),
       );
   }
 
