@@ -7,7 +7,8 @@ import { Order } from '../class/order';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderService
+{
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +16,9 @@ export class OrderService {
    *  Read all Orders
    *  return a table of order
    */
-  getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>('https://fronttoback-2c84a.firebaseio.com/orders.json')
+  getOrders(): Observable<Order[]>
+  {
+    return this.http.get<Order[]>('https://fronttoback-9bb02.firebaseio.com/order.json')
       .pipe(
         tap(data => {
           data
@@ -25,12 +27,23 @@ export class OrderService {
       );
   }
 
+  getOrderByKey(key: string) : Observable<Order[]>
+  {
+    // console.log('https://fronttoback-9bb02.firebaseio.com/order/'+ key +'.json');
+    return this.http.get<Order[]>('https://fronttoback-9bb02.firebaseio.com/order/' + key + '.json')
+    .pipe(
+      tap(data => JSON.stringify(data)),
+      catchError(this.handleError('getOrderByKey', []))
+    );
+  }
+
   /**
    *  Add a new Order to the table
    *  @param Order
    */
-  addOrder(order: Order): Observable<Order> {
-    let url = `https://fronttoback-2c84a.firebaseio.com/orders.json`;
+  addOrder(order: Order): Observable<Order>
+  {
+    let url = `https://fronttoback-9bb02.firebaseio.com/order.json`;
     return this.http.post<Order>(url, order, { responseType: 'json' }).pipe(
       tap((product: Order) => console.log('order Added')),
       catchError(this.handleError<Order>('addBeer')),
@@ -43,7 +56,8 @@ export class OrderService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T)
+  {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
