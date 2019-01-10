@@ -11,7 +11,7 @@ import { Order } from "../class/order";
 })
 export class ProfilPage implements OnInit {
 
-  user:   User;
+  user:   any[];
   list:   any[] = [];
   order:  Order[];
 
@@ -27,8 +27,15 @@ export class ProfilPage implements OnInit {
     //   console.log(Object);
     // });
     // console.log("after call function addUser");
-    this.user = this.userService.getUserByKey("-LVoG7cVVNrswqyHgM1q")[0];
-    this.getOrders();
+    this.getUserByKey("-LVoG7cVVNrswqyHgM1q");
+    //this.getOrders();
+  }
+
+  getUserByKey(key: string)
+  {
+    this.userService.getUserByKey(key).subscribe(data => {
+      this.user = data;
+    });
   }
 
   getOrders() {
