@@ -49,6 +49,17 @@
       </ion-card>
       
       <!-- Second part of the page (previous order)-->
+      <h1>Mes Commandes</h1>
+      <ion-card *ngFor="let order of list" margin>
+        <ion-card-header>
+          <ion-card-subtitle>{{ order?.price }} €</ion-card-subtitle>
+          <ion-card-title>{{ order?.nameMenu }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{ order?.nameUser }}<br>
+            {{ order?.message }}<br>
+        </ion-card-content>
+      </ion-card>
     </ion-row>
   </ion-grid>
 </ion-content>

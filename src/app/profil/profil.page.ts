@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { OrderService } from '../service/order.service';
-import { User } from "../class/user";
-import { Order } from "../class/order";
 
 @Component({
   selector: 'app-profil',
@@ -11,40 +9,41 @@ import { Order } from "../class/order";
 })
 export class ProfilPage implements OnInit {
 
-  user:   any[];
+  user:   Object;
   list:   any[] = [];
-  order:  Order[];
 
   constructor(private userService: UserService, private orderService: OrderService) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     // Allow us to by default charge an example user. 
-    // let order: Order = new Order(null,null, 5, new Date());
-    // let user: User = new User("NameTest", "FirstNameTest", "EmailTest", "PasswordTest", 24, null);
-    // user.order = [];
-    // user.order[0] = order;
-    // this.userService.addUser(user).subscribe(data => {
-    //   console.log(Object);
-    // });
-    // console.log("after call function addUser");
-    this.getUserByKey("-LVoG7cVVNrswqyHgM1q");
-    //this.getOrders();
+    /* let order: string = "-LVrvkYRyzGfNBylx0Yt";
+    let user: User = new User("OrderKey attach to User", " ", " ", " ", 94, null);
+    user.order = [];
+    user.order[0] = order;
+    this.userService.addUser(user).subscribe(data => {
+      console.log(Object);
+    });
+    console.log("after call function addUser"); */
+    this.list = [];
+
+    this.getUserByKey("-LVryqyN3d7mwmVz1KvU");
   }
 
   getUserByKey(key: string)
   {
     this.userService.getUserByKey(key).subscribe(data => {
       this.user = data;
+      this.user['order'].forEach(element => {
+        this.getOrderByKey(element);
+      });
     });
   }
-
-  getOrders() {
-    this.orderService.getOrders().subscribe(data => {
-      let cle = Object.keys(data);
-      let donnees = Object.values(data);
-      for (let i = 0; i < cle.length; i++) {
-        this.list.push({ key: cle[i], values: donnees[i] });
-      }
+  
+  getOrderByKey(key: string)
+  {
+    this.orderService.getOrderByKey(key).subscribe(data => {
+      this.list.push(data);
     });
   }
 }
