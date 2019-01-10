@@ -34,7 +34,7 @@ export class UserService {
     //console.log('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json'); /* Cette console.log() est utile pour debug */
     return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json')
       .pipe(
-        tap(data => data),
+        tap(data => JSON.stringify(data)),
         catchError(this.handleError('getUserByKey', []))
       );
   }
