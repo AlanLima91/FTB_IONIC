@@ -1,18 +1,20 @@
-import { User } from './user';
-import { Type } from '@angular/compiler';
-import { Menu } from './menu';
+export class Order
+{
+    public nameMenu:    string;
+    public nameUser:    string;
+    public message:     string;
+    public price:       number;
+    public soldUser:    number;
+    public date:        Date | void;
 
-export class Order {
-    public menu: Menu | void;
-    public user: User | void;
-    public price: number;
-    public date: Date | void
 
-
-    constructor(menu: Menu | void, user: User | void, price: number, date: Date | void) {
-        this.menu = menu;
-        this.user = user;
+    constructor(nameMenu: string, nameUser: string, message: string, price: number, soldUser: number, date: Date | void)
+    {
+        this.nameMenu = nameMenu;
+        this.nameUser = nameUser;
+        this.message = message;
         this.price = price;
+        this.soldUser = soldUser;
         this.date = date;
     }
 }
