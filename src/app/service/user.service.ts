@@ -29,7 +29,9 @@ export class UserService {
    *  Read all Users and look for one user
    *  return a user
    */
-  getUserByKey(key: string): Observable<User[]> {
+  getUserByKey(key: string): Observable<User[]>
+  {
+    //console.log('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json'); /* Cette console.log() est utile pour debug */
     return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json')
       .pipe(
         tap(data => data),
