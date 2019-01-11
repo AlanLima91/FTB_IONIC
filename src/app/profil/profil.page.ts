@@ -8,7 +8,8 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './profil.page.html',
   styleUrls: ['./profil.page.scss'],
 })
-export class ProfilPage implements OnInit {
+export class ProfilPage implements OnInit
+{
 
   user:   Object;
   list:   any[] = [];
