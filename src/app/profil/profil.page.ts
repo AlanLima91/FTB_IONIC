@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { OrderService } from '../service/order.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.page.html',
   styleUrls: ['./profil.page.scss'],
 })
-export class ProfilPage implements OnInit {
+export class ProfilPage implements OnInit
+{
 
   user:   Object;
   list:   any[] = [];
 
-  constructor(private userService: UserService, private orderService: OrderService) { }
+  constructor(private userService: UserService, private orderService: OrderService, private alertController: AlertController) { }
 
+  /*
+   *  First you load an user by his key.
+   *  Then with the user load, you can now load his order.
+   *  And then print them.
+   */
   ngOnInit()
   {
-    // Allow us to by default charge an example user. 
-    /* let order: string = "-LVrvkYRyzGfNBylx0Yt";
-    let user: User = new User("OrderKey attach to User", " ", " ", " ", 94, null);
-    user.order = [];
-    user.order[0] = order;
-    this.userService.addUser(user).subscribe(data => {
-      console.log(Object);
-    });
-    console.log("after call function addUser"); */
     this.list = [];
-
     this.getUserByKey("-LVryqyN3d7mwmVz1KvU");
   }
 
@@ -34,9 +31,14 @@ export class ProfilPage implements OnInit {
   {
     this.userService.getUserByKey(key).subscribe(data => {
       this.user = data;
-      this.user['order'].forEach(element => {
-        this.getOrderByKey(element);
-      });
+      let i = this.user['order'].length - 1;
+
+      /*
+       *  Avec cette boucle j'essaie d'avoir la liste des commandes
+       *  de la dernière à la première. (Mais il y a un coté Aléatoire dans mes tests.) 
+       */
+      while (i != -1)
+        this.getOrderByKey(this.user['order'][i--]);
     });
   }
   
@@ -45,5 +47,20 @@ export class ProfilPage implements OnInit {
     this.orderService.getOrderByKey(key).subscribe(data => {
       this.list.push(data);
     });
+  }
+
+  async onClick()
+  {
+    const alrt = await this.alertController.create({
+      header: 'Besoin d\'aide ?',
+      message: 'Si vous souhaitez changer d\'adresse mail ou de mot de passe, vous devez simplement cliquer sur votre adresse mail ou le "mot de passe" et saisir les nouvelles valeurs.',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => { }
+        }
+      ]
+    });
+    await alrt.present();
   }
 }

@@ -3,6 +3,11 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="end" name="bulb"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       profil
     </ion-title>
@@ -22,15 +27,14 @@
             <ion-grid>
               <ion-row>
                 <ion-col col-6>
-                  {{ user?.firstname }}
+                  <h5>{{ user?.firstname }}</h5>
                 </ion-col>
                 <ion-col col-6>
-                  {{ user?.name }}
+                  <h5>{{ user?.name }}</h5>
                 </ion-col>
               </ion-row>
-            </ion-grid>
-            {{ user?.email }} <br>
-            Solde : {{ user?.solde }}€
+            </ion-grid><br>
+            <h5>Solde : {{ user?.solde }}€</h5>
           </ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
