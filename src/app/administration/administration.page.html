@@ -10,5 +10,13 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-card *ngFor="let order of listOrders">
+    <ion-card-header>
+      <ion-card-subtitle>{{ order.price }}€</ion-card-subtitle>
+      <ion-card-title>{{ order.nameMenu }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ order.nameUser }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

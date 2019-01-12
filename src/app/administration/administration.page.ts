@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-administration',
@@ -9,13 +10,15 @@ import { UserService } from '../service/user.service';
 export class AdministrationPage implements OnInit
 {
 
-  list: any[] = [];
+  listOrders: any[] = [];
+  listUsers: any[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private orderService: OrderService) { }
 
   ngOnInit()
   {
     this.getUsers();
+    this.getOrders();
   }
 
   getUsers()
@@ -25,9 +28,23 @@ export class AdministrationPage implements OnInit
       let donnees = Object.values(data);
       for (let i = 0; i < cle.length; i++)
       {
-        this.list.push({ key: cle[i], values: donnees[i] });
+        this.listUsers.push({ key: cle[i], values: donnees[i] });
       }
+      console.log(this.listUsers)
     });
+  }
+
+  getOrders()
+  {
+    this.orderService.getOrders().subscribe(data => {
+      let cle = Object.keys(data);
+      let donnees = Object.values(data);
+      for (let i = 0; i < cle.length; i++)
+      {
+        this.listOrders.push({ key: cle[i], values: donnees[i] });
+      }
+      console.log(this.listOrders)
+    })
   }
 
   increase(key: string){  }
