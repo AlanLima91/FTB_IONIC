@@ -9,11 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color=success>
   <ion-grid fixed>
     <ion-row justify-content-around>
       <!-- First part of the page (information)-->
-      <ion-card color=dark margin>
+      <ion-card color=light margin>
         <ion-card-header text-center>
           <ion-card-title margin>
             <h2 text-uppercase>Informations</h2>
@@ -35,31 +35,31 @@
         </ion-card-header>
         <ion-card-content>
           <form>
-            <ion-item margin>
+            <ion-item margin color=light>
               <ion-label position="floating">{{ user?.email }}</ion-label>
               <ion-input type="email" name="email" required></ion-input>
             </ion-item>
-            <ion-item margin>
+            <ion-item margin color=light>
               <ion-label position="floating">Mot de passe</ion-label>
               <ion-input type="password" name="password" required></ion-input>
             </ion-item>
-            <ion-button margin type=submit text-uppercase expand=block>Modifier</ion-button>
+            <ion-button margin fill=outline type=submit text-uppercase expand=block color=success>Modifier</ion-button>
           </form>
         </ion-card-content>
       </ion-card>
+    </ion-row>
       
       <!-- Second part of the page (previous order)-->
-      <h1>Mes Commandes</h1>
-      <ion-card *ngFor="let order of list" margin>
+      <h1 text-center text-uppercase>Mes Commandes</h1>
+      <ion-card *ngFor="let order of list" margin color=light>
         <ion-card-header>
           <ion-card-subtitle>{{ order?.price }} €</ion-card-subtitle>
           <ion-card-title>{{ order?.nameMenu }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-            {{ order?.nameUser }}<br>
-            {{ order?.message }}<br>
+          {{ order?.nameUser }}<br>
+          {{ order?.message }}<br>
         </ion-card-content>
       </ion-card>
-    </ion-row>
   </ion-grid>
 </ion-content>
