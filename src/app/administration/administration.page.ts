@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { OrderService } from '../service/order.service';
+import { Order } from '../class/order';
 
 @Component({
   selector: 'app-administration',
@@ -11,7 +12,7 @@ export class AdministrationPage implements OnInit
 {
 
   listOrders: any[] = [];
-  listUsers: any[] = [];
+  listUsers:  any[] = [];
 
   constructor(private userService: UserService, private orderService: OrderService) { }
 
@@ -30,7 +31,7 @@ export class AdministrationPage implements OnInit
       {
         this.listUsers.push({ key: cle[i], values: donnees[i] });
       }
-      console.log(this.listUsers)
+      // console.log(this.listUsers)
     });
   }
 
