@@ -31,12 +31,12 @@ export class ProfilPage implements OnInit
   {
     this.userService.getUserByKey(key).subscribe(data => {
       this.user = data;
-      let i = this.user['order'].length - 1;
-
+      
       /*
-       *  Avec cette boucle j'essaie d'avoir la liste des commandes
-       *  de la dernière à la première. (Mais il y a un coté Aléatoire dans mes tests.) 
-       */
+      *  Avec cette boucle j'essaie d'avoir la liste des commandes
+      *  de la dernière à la première. (Mais il y a un coté Aléatoire dans mes tests.) 
+      */
+     let i = this.user['order'].length - 1;
       while (i != -1)
         this.getOrderByKey(this.user['order'][i--]);
     });
@@ -44,9 +44,7 @@ export class ProfilPage implements OnInit
   
   getOrderByKey(key: string)
   {
-    this.orderService.getOrderByKey(key).subscribe(data => {
-      this.list.push(data);
-    });
+    this.orderService.getOrderByKey(key).subscribe(data => this.list.push(data));
   }
 
   async onClick()
