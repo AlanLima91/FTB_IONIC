@@ -30,7 +30,6 @@ export class AdministrationPage implements OnInit
       {
         this.listUsers.push({ key: cle[i], values: donnees[i] });
       }
-      console.log(this.listUsers)
     });
   }
 
