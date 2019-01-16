@@ -16,11 +16,6 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
       title: 'Profil',
       url: '/profil',
       icon: 'contact'
@@ -39,6 +34,11 @@ export class AppComponent {
       title:  'Connexion',
       url:    '/signin',
       icon:   'log-in'
+    },
+    {
+      title: 'Deconnexion',
+      url: '/signin',
+      icon: 'log-out'
     },
   ];
 
