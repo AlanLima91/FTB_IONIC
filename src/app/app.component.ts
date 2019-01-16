@@ -35,6 +35,11 @@ export class AppComponent {
       url:    '/signin',
       icon:   'log-in'
     },
+    {
+      title: 'Deconnexion',
+      url: '/signin',
+      icon: 'log-out'
+    },
   ];
 
   constructor(
