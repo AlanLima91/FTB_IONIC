@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
   { path: 'reset-pwd', loadChildren: './reset-pwd/reset-pwd.module#ResetPwdPageModule' },
+  { path: 'logout', loadChildren: './signin/signin.module#SigninPageModule'}
 ];
 
 @NgModule({
