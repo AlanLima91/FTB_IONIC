@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'menu',
     loadChildren: './home/home.module#HomePageModule'
   },
   { path: 'profil', loadChildren: './profil/profil.module#ProfilPageModule' },
