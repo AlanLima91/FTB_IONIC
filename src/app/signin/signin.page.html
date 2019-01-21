@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-title color=success>
       Connexion
     </ion-title>
@@ -32,9 +29,9 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col>
-        <ion-button (click)="onClick()" size=default fill=solid color=light>
-          <h5>Pas encore inscrit ?</h5>
-        </ion-button>
+        <ion-item>
+          <ion-button [routerLink]="['/signup']">Pas encore inscrit ?</ion-button>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
