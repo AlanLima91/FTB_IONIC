@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding color=success>
-  <ion-button (click)="onClick()" color=dark text-uppercase expand=block margin>
+  <ion-button [routerLink]="['/clients']" color=dark text-uppercase expand=block margin>
     <ion-icon slot="start" name="contacts"></ion-icon>
     Clients
   </ion-button>
@@ -37,7 +37,4 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <ion-button (click)="onClick()" text-uppercase fill=outline expand=block color=success>
-    Liste des utilisateurs
-  </ion-button>
 </ion-content>
