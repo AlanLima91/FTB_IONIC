@@ -9,6 +9,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content color=success>
+  <ion-card color=light>
+    <ion-card-header text-center>
+        <ion-card-subtitle>Fiche Information</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
 
+      <ion-item color=light>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input type=text name=name ></ion-input>
+      </ion-item>
+
+      <ion-item color=light>
+        <ion-label position="floating">Prénom</ion-label>
+        <ion-input type=name name=firstname ></ion-input>
+      </ion-item>
+      
+      <ion-item color=light>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type=email name=email required></ion-input>
+      </ion-item>
+
+      <ion-item color=light>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type=password name=password ></ion-input>
+      </ion-item>
+      
+      <ion-button text-uppercase size=large fill=outline expand=block type=submit color=success>s'inscrire</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
