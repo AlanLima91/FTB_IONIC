@@ -15,28 +15,32 @@
         <ion-card-subtitle>Fiche Information</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-
-      <ion-item color=light>
-        <ion-label position="floating">Nom</ion-label>
-        <ion-input type=text name=name ></ion-input>
-      </ion-item>
-
-      <ion-item color=light>
-        <ion-label position="floating">Prénom</ion-label>
-        <ion-input type=name name=firstname ></ion-input>
-      </ion-item>
-      
-      <ion-item color=light>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type=email name=email required></ion-input>
-      </ion-item>
-
-      <ion-item color=light>
-        <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input type=password name=password ></ion-input>
-      </ion-item>
-      
-      <ion-button text-uppercase size=large fill=outline expand=block type=submit color=success>s'inscrire</ion-button>
+      <form (ngSubmit)=onSubmit(f) #f=ngForm>
+        
+        <ion-item color=light>
+          <ion-label for=name position="floating">Nom</ion-label>
+          <ion-input type=text name=name ngModel required></ion-input>
+        </ion-item>
+        
+        <ion-item color=light>
+          <ion-label for=firstname position=floating>Prénom</ion-label>
+          <ion-input type=text name=firstname ngModel required></ion-input>
+        </ion-item>
+        
+        <ion-item color=light>
+          <ion-label for=email position="floating">Email</ion-label>
+          <ion-input type=text name=email ngModel required></ion-input>
+        </ion-item>
+        
+        <ion-item color=light>
+          <ion-label for=password position="floating">Mot de passe</ion-label>
+          <ion-input type=password name=password ngModel required></ion-input>
+        </ion-item>
+        
+        <ion-button text-uppercase size=large fill=outline expand=block type=submit color=success>
+          s'inscrire
+        </ion-button>
+      </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
