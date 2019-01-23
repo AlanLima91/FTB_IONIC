@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
   styleUrls: ['./signin.page.scss'],
 })
-export class SigninPage implements OnInit{
+export class SigninPage implements OnInit
+{
 
-  constructor() { }
+  constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit()
+  {  }
 
   onSubmit(form)
   {
-    /* this.beerService.editBeer(form.form.value, this.key).subscribe(beer => {
-      this.editForm();
-      this.router.navigateByUrl('');
-    }); */
     console.log("You pushed the connection button, Well Done !");
+    
   }
 }
