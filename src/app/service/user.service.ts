@@ -46,7 +46,6 @@ export class UserService {
   addUser(user: User): Observable<User>
   {
     let url = `https://fronttoback-9bb02.firebaseio.com/users.json`;
-    console.log("in addUser method");
     return this.http.post<User>(url, user, {responseType: 'json'}).pipe(
         tap((product: User) => console.log('User Added')),
         catchError(this.handleError<User>('addUser')),
