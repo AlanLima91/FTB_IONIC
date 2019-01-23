@@ -1,38 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color=success>
+    <ion-title color=success text-uppercase>
       Connexion
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color=success>
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <ion-card margin color=light>
+  <ion-card margin color=light>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <ion-card-content>
-        <ion-item color=light><!-- sans le ion-item, impossible d'avoir l'effet floating -->
+
+        <!-- sans le ion-item, impossible d'avoir l'effet floating -->
+        <ion-item color=light>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" name="email" required></ion-input>
+          <ion-input type="email" name="email" ngModel required></ion-input>
         </ion-item>
 
         <ion-item color=light>
           <ion-label position="floating">Mot de passe</ion-label>
-          <ion-input type="password" name="password" clearOnEdit required clearInput></ion-input>
+          <ion-input type="password" name="password" clearOnEdit clearInput ngModel required></ion-input>
        </ion-item>
+
       </ion-card-content>
       <ion-button text-uppercase size=large fill=outline expand=block type=submit color=success>Connexion</ion-button>
-      <ion-button [routerLink]="['/reset-pwd']" size=small fill=clear color=dark>
-        Mot de passe oublié ?
-      </ion-button>
+      <ion-button [routerLink]="['/reset-pwd']" size=small fill=clear color=dark>Mot de passe oublié ?</ion-button>
+    </form>
     </ion-card>
-  </form>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col>
-        <ion-card color=light>
-          <ion-button [routerLink]="['/signup']" fill=outline size=large color=secondary expand=block>Pas encore inscrit ?</ion-button>
+  
+        <ion-card color=secondary>
+          <ion-button [routerLink]="['/signup']" fill=solid size=large color=secondary expand=block>Pas encore inscrit ?</ion-button>
         </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>
