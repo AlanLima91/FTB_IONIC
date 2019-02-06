@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-import { tap, catchError, filter } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { User } from '../class/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  url = 'http://localhost:8000/users/';
 
   constructor(private http: HttpClient) { }
 
@@ -15,41 +16,62 @@ export class UserService {
    *  Read all Users
    *  return a table of user
    */
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users.json')
-      .pipe(
-        tap(data => {
-          data
-        }),
-        catchError(this.handleError('getUsers', []))
-      );
+  getUsers(): Observable<any>
+  {
+    return this.http.get<any>(this.url).pipe(tap(data =>
+      {
+        data
+      }),
+      catchError(this.handleError('getUsers', [])))
   }
 
   /**
    *  Read all Users and look for one user
    *  return a user
    */
-  getUserByKey(key: string): Observable<User[]>
+  getUserByKey(key: string): Observable<User>
   {
-    //console.log('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json'); /* Cette console.log() est utile pour debug */
-    return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users/' + key + '.json')
+    return this.http.get<User>(this.url + key)
       .pipe(
         tap(data => JSON.stringify(data)),
-        catchError(this.handleError('getUserByKey', []))
+        catchError(this.handleError<User>('getUserByKey')),
       );
   }
 
   /**
    *  Add a new User to the table
    *  @param User
+   *  @return Observable
    */
   addUser(user: User): Observable<User>
   {
-    let url = `https://fronttoback-9bb02.firebaseio.com/users.json`;
-    return this.http.post<User>(url, user, {responseType: 'json'}).pipe(
-        tap((product: User) => console.log('User Added')),
+    return this.http.post<User>(this.url, user, {responseType: 'json'}).pipe(
+        tap((user: User) => console.log('User Added')),
         catchError(this.handleError<User>('addUser')),
       );
+  }
+
+  deleteUser(key: string): Observable<User>
+  {
+    return this.http.delete<User>(this.url).pipe(
+      tap((user: User) => console.log('User deleted')),
+      catchError(this.handleError<User>('deleteUser')),
+    );
+  }
+
+  updateUser(key: string, user: User): Observable<User>
+  {
+    return this.http.patch<User>(this.url + key, user).pipe(
+      tap((user: User) => console.log('User updated')),
+      catchError(this.handleError<User>('updateUser')),
+    );
+  }
+
+  loginUser(user: User): Observable<HttpResponse<Object>>
+  {
+    return this.http.post<HttpResponse<Object>>(this.url + 'login', user, {
+      observe: "response"
+    });
   }
 
   /**
