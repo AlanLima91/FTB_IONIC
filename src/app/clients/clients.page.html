@@ -15,46 +15,44 @@
     </ion-button>
 
     <ion-card *ngFor="let user of listUsers" color=light>
-        <ion-card-header>
-          <ion-card-subtitle text-center>{{ user.key }}</ion-card-subtitle>
+        <ion-card-header text-center>
+          {{ user._id }}
         </ion-card-header>
         <ion-grid fixed>
+
           <ion-row>
-
-            <ion-col size="6" text-center>
-              {{ user.values.firstname }}
-              {{ user.values.name }}
-              <ion-row margin>
-                <ion-col size="12" text-uppercase>
-                  Solde : {{ user.values.solde }}
-                </ion-col>
-              </ion-row>
+            <ion-col text-center>
+              {{ user.firstname }}
+              {{ user.name }}
             </ion-col>
-
-            <ion-col size="6">
-              <ion-row>
-                <ion-item color=light>
-                  <ion-label position=floating >Solde</ion-label>
-                  <ion-input type=number></ion-input>
-                </ion-item>
-              </ion-row>
-
-              <ion-row>
-                <ion-col size="6">
-                  <ion-button (click)="onClick()" fill=outline size=large>
-                    +
-                  </ion-button>
-                </ion-col>
-
-                <ion-col size="6">
-                  <ion-button (click)="onClick()" fill=outline size=large>
-                    -
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-col>
-
           </ion-row>
+          
+          <ion-row margin>
+            <ion-col text-uppercase text-center>
+              Solde : {{ user.solde }}
+            </ion-col>
+          </ion-row>
+          
+          <ion-row>
+            <ion-item color=light>
+              <ion-label position=floating >Solde</ion-label>
+              <ion-input type=number></ion-input>
+            </ion-item>
+          </ion-row>
+          
+          <ion-row justify-content-around>
+            <ion-col size="6" color=warning>
+              <ion-button (click)="increase()" fill=outline size=large>
+                +
+              </ion-button>
+            </ion-col>
+            <ion-col size="6" color=danger>
+              <ion-button (click)="decrease()" mode=ios fill=outline size=large>
+                -
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
         </ion-grid>
       </ion-card>
 </ion-content>

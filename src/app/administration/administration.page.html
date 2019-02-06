@@ -9,32 +9,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding color=success>
+<ion-content padding>
   <ion-button [routerLink]="['/clients']" color=dark text-uppercase expand=block margin>
     <ion-icon slot="start" name="contacts"></ion-icon>
     Clients
   </ion-button>
-  <ion-card *ngFor="let order of listOrders" color=light>
+  <ion-card *ngFor="let order of listOrders">
+
     <ion-card-header>
-      <ion-card-subtitle>{{ order.values?.price }}€</ion-card-subtitle>
-      <ion-card-title>{{ order.values.nameMenu }}</ion-card-title>
+      <ion-card-subtitle color=success text-center>
+        {{ order.values.nameMenu }}
+        {{ order.values?.price }}
+        <ion-icon color=success name="logo-euro"></ion-icon>
+      </ion-card-subtitle>
     </ion-card-header>
+
     <ion-card-content>
-      <ion-grid fixed>
-        <ion-row margin>
-          <ion-col size="12">
-            {{ order.values.message }}
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="6">
-              {{ order.values.nameUser }}
-          </ion-col>
-          <ion-col size="6" >
-            {{ order.values.soldUser }}
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <i text-align-justify>{{ order.values.message }}</i><br>
+      <b>{{ order.values.nameUser }}</b>
+      <br>
+      <ion-toggle></ion-toggle>
     </ion-card-content>
+
   </ion-card>
 </ion-content>
