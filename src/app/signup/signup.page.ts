@@ -31,7 +31,8 @@ export class SignupPage implements OnInit
       form.form.value.name,
       null, // Order
       form.form.value.password,
-      0     //solde
+      0,     //solde
+      false  // admin
     );
 
     this.userService.addUser(user).subscribe(user => {

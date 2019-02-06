@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { User } from '../class/user';
@@ -11,6 +11,20 @@ export class UserService {
   url = 'http://localhost:8000/users/';
 
   constructor(private http: HttpClient) { }
+
+  // /**
+  //  *  Read all Users
+  //  *  return a table of user
+  //  */
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users.json')
+  //     .pipe(
+  //       tap(data => {
+  //         data
+  //       }),
+  //       catchError(this.handleError('getUsers', []))
+  //     );
+  // }
 
   /**
    *  Read all Users
