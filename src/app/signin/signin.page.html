@@ -6,19 +6,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding color=success>
-  <ion-card margin color=light>
+<ion-content padding>
+  <ion-card margin>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <ion-card-content>
 
         <!-- sans le ion-item, impossible d'avoir l'effet floating -->
         <ion-item color=light>
-          <ion-label position="floating">Email</ion-label>
+          <ion-label position="floating" color=success>Email</ion-label>
           <ion-input type="email" name="email" ngModel required></ion-input>
         </ion-item>
 
         <ion-item color=light>
-          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-label position="floating" color=success>Mot de passe</ion-label>
           <ion-input type="password" name="password" clearOnEdit clearInput ngModel required></ion-input>
        </ion-item>
 
@@ -26,9 +26,7 @@
       <ion-button text-uppercase size=large fill=outline expand=block type=submit color=success>Connexion</ion-button>
       <ion-button [routerLink]="['/reset-pwd']" size=small fill=clear color=dark>Mot de passe oublié ?</ion-button>
     </form>
-    </ion-card>
+  </ion-card>
   
-        <ion-card color=secondary>
-          <ion-button [routerLink]="['/signup']" fill=solid size=large color=secondary expand=block>Pas encore inscrit ?</ion-button>
-        </ion-card>
+  <ion-button [routerLink]="['/signup']" fill=solid size=large color=success expand=block>Pas encore inscrit ?</ion-button>
 </ion-content>

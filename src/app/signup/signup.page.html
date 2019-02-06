@@ -9,31 +9,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color=success>
-  <ion-card color=light>
+<ion-content>
+  <ion-card>
     <ion-card-header text-center>
-        <ion-card-subtitle>Fiche Information</ion-card-subtitle>
+        <ion-card-subtitle color=success>Fiche Information</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <form (ngSubmit)=onSubmit(f) #f=ngForm>
         
         <ion-item color=light>
-          <ion-label for=name position="floating">Nom</ion-label>
+          <ion-label for=name position="floating" color=success>Nom</ion-label>
           <ion-input type=text name=name ngModel required></ion-input>
         </ion-item>
         
         <ion-item color=light>
-          <ion-label for=firstname position=floating>Prénom</ion-label>
+          <ion-label for=firstname position=floating color=success>Prénom</ion-label>
           <ion-input type=text name=firstname ngModel required></ion-input>
         </ion-item>
         
         <ion-item color=light>
-          <ion-label for=email position="floating">Email</ion-label>
+          <ion-label for=email position="floating" color=success>Email</ion-label>
           <ion-input type=text name=email ngModel required></ion-input>
         </ion-item>
         
         <ion-item color=light>
-          <ion-label for=password position="floating">Mot de passe</ion-label>
+          <ion-label for=password position="floating" color=success>Mot de passe</ion-label>
           <ion-input type=password name=password ngModel required></ion-input>
         </ion-item>
         
