@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { User } from '../class/user';
 
 @Component({
   selector: 'app-clients',
@@ -8,7 +9,7 @@ import { UserService } from '../service/user.service';
 })
 export class ClientsPage implements OnInit
 {
-  listUsers:  any[] = [];
+  listUsers:  User[] = [];
 
   constructor(private userService: UserService) { }
 
@@ -20,13 +21,7 @@ export class ClientsPage implements OnInit
   getUsers()
   {
     this.userService.getUsers().subscribe(data => {
-      let cle = Object.keys(data);
-      let donnees = Object.values(data);
-      for (let i = 0; i < cle.length; i++)
-      {
-        this.listUsers.push({ key: cle[i], values: donnees[i] });
-      }
-      console.log(this.listUsers);
+      this.listUsers = data.users;
     });
   }
 
