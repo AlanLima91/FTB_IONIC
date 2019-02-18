@@ -12,7 +12,8 @@ import { User } from '../class/user';
 export class ProfilPage implements OnInit
 {
 
-  user:   User;
+  data:   any = null;
+  user:   any= null;
   list:   any[] = [];
 
   constructor(private userService: UserService, private orderService: OrderService, private alertController: AlertController) { }
@@ -25,30 +26,30 @@ export class ProfilPage implements OnInit
   ngOnInit()
   {
     this.list = [];
-    this.getUserByKey("5c53066969883538717ca42d");
+    this.getUserByKey('5c6afe3c84f6cf4db4479b95');
   }
 
   getUserByKey(key: string)
   {
     this.userService.getUserByKey(key).subscribe(data => {
-      this.user = data;
-      console.log(this.user)
-      if (this.user.order)
+      this.data = data;
+      this.user = this.data.user;
+      let order : any [] = this.user.orderKeys;
+      if (order[0])
       {
-        /*
-        *  Avec cette boucle j'essaie d'avoir la liste des commandes
-        *  de la dernière à la première. (Mais il y a un coté Aléatoire dans mes tests.) 
-        */
-       let i = 0;
-       while (this.user.order[i])
-        this.getOrderByKey(this.user.order[i++]);
+        let i = order.length;
+        while (i > 0)
+          this.getOrderByKey(order[i--]);
       }
     });
   }
     
   getOrderByKey(key: string)
   {
-    this.orderService.getOrderByKey(key).subscribe(data => this.list.push(data));
+    this.orderService.getOrderByKey(key).subscribe(data => {
+      console.log(data);
+      this.list.push(data)}
+      );
   }
 
   async onClick()

@@ -14,56 +14,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color=success>
-  <ion-grid fixed>
-    <ion-row justify-content-around>
-      <!-- First part of the page (information)-->
-      <ion-card color=light margin>
+<ion-content>
+      <ion-card>
         <ion-card-header text-center>
-          <ion-card-title margin>
-            <h2 text-uppercase>Informations</h2>
-          </ion-card-title>
-          <ion-card-subtitle>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-6>
-                  <h5>{{ user?.firstname }}</h5>
-                </ion-col>
-                <ion-col col-6>
-                  <h5>{{ user?.name }}</h5>
-                </ion-col>
-              </ion-row>
-            </ion-grid><br>
-            <h5>Solde : {{ user?.solde }}€</h5>
-          </ion-card-subtitle>
+          <ion-card-title color=medium text-uppercase><h1><b>Informations</b></h1></ion-card-title>
         </ion-card-header>
-        <ion-card-content>
+
+        <ion-card-content>  
           <form>
-            <ion-item margin color=light>
-              <ion-label position="floating">{{ user?.email }}</ion-label>
-              <ion-input type="email" name="email" required></ion-input>
-            </ion-item>
-            <ion-item margin color=light>
-              <ion-label position="floating">Mot de passe</ion-label>
-              <ion-input type="password" name="password" required></ion-input>
-            </ion-item>
-            <ion-button margin fill=outline type=submit text-uppercase expand=block color=success>Modifier</ion-button>
+
+            <ion-list>
+              <ion-item>
+                <ion-label position=floating color=success>Prénom : {{ data?.user?.firstname }}</ion-label>
+                <ion-input type=text name=firstname required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position=floating color=success>Nom : {{ data?.user?.name }}</ion-label>
+                <ion-input type=text name=name required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color=dark>Solde : {{ data?.user?.solde }}€</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label position=floating color=success>{{ data?.user?.email }}</ion-label>
+                <ion-input type=email name=email required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position=floating color=success>Mot de passe :</ion-label>
+                <ion-input type=password name=password required></ion-input>
+              </ion-item>
+              <ion-button margin fill=outline type=submit text-uppercase expand=block color=success>Modifier</ion-button>
+            </ion-list>
+            
           </form>
         </ion-card-content>
       </ion-card>
-    </ion-row>
       
       <!-- Second part of the page (previous order)-->
-      <h1 text-center text-uppercase>Mes Commandes</h1>
-      <ion-card *ngFor="let order of list" margin color=light>
+      <ion-card>
+        <ion-card-title text-center text-uppercase color=medium>
+          <h1><b>Mes Commandes</b></h1>
+        </ion-card-title>
+      </ion-card>
+      <ion-card *ngFor="let order of list" margin>
         <ion-card-header>
-          <ion-card-subtitle>{{ order?.price }} €</ion-card-subtitle>
-          <ion-card-title>{{ order?.nameMenu }}</ion-card-title>
+          <ion-card-subtitle color=success>{{ order?.price }} €</ion-card-subtitle>
+          <ion-card-title color=success>{{ order?.nameMenu }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          {{ order?.nameUser }}<br>
           {{ order?.message }}<br>
         </ion-card-content>
       </ion-card>
-  </ion-grid>
 </ion-content>
