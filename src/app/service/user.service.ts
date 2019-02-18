@@ -8,23 +8,9 @@ import { User } from '../class/user';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:8000/users/';
+  url = 'http://aston.maquette-potion-mediatique.com/users/';
 
   constructor(private http: HttpClient) { }
-
-  // /**
-  //  *  Read all Users
-  //  *  return a table of user
-  //  */
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>('https://fronttoback-9bb02.firebaseio.com/users.json')
-  //     .pipe(
-  //       tap(data => {
-  //         data
-  //       }),
-  //       catchError(this.handleError('getUsers', []))
-  //     );
-  // }
 
   /**
    *  Read all Users
@@ -45,11 +31,7 @@ export class UserService {
    */
   getUserByKey(key: string): Observable<User>
   {
-    return this.http.get<User>(this.url + key)
-      .pipe(
-        tap(data => JSON.stringify(data)),
-        catchError(this.handleError<User>('getUserByKey')),
-      );
+    return this.http.get<User>(this.url + key);
   }
 
   /**

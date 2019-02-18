@@ -9,7 +9,7 @@ import { Order } from '../class/order';
 })
 export class OrderService
 {
-
+  url = 'http://aston.maquette-potion-mediatique.com/orders/';
   constructor(private http: HttpClient) { }
 
   /**
@@ -18,7 +18,7 @@ export class OrderService
    */
   getOrders(): Observable<Order[]>
   {
-    return this.http.get<Order[]>('https://fronttoback-9bb02.firebaseio.com/order.json')
+    return this.http.get<Order[]>(this.url)
       .pipe(
         tap(data => {
           data
@@ -29,8 +29,7 @@ export class OrderService
 
   getOrderByKey(key: string) : Observable<Order[]>
   {
-    // console.log('https://fronttoback-9bb02.firebaseio.com/order/'+ key +'.json');
-    return this.http.get<Order[]>('https://fronttoback-9bb02.firebaseio.com/order/' + key + '.json')
+    return this.http.get<Order[]>(this.url + key)
     .pipe(
       tap(data => JSON.stringify(data)),
       catchError(this.handleError('getOrderByKey', []))
@@ -43,8 +42,7 @@ export class OrderService
    */
   addOrder(order: Order): Observable<Order>
   {
-    let url = `https://fronttoback-9bb02.firebaseio.com/order.json`;
-    return this.http.post<Order>(url, order, { responseType: 'json' }).pipe(
+    return this.http.post<Order>(this.url, order, { responseType: 'json' }).pipe(
       tap((product: Order) => console.log('order Added')),
       catchError(this.handleError<Order>('addBeer')),
     );
