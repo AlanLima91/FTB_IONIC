@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { OrderService } from '../service/order.service';
 import { AlertController } from '@ionic/angular';
-import { User } from '../class/user';
 
 @Component({
   selector: 'app-profil',
@@ -32,14 +31,12 @@ export class ProfilPage implements OnInit
   getUserByKey(key: string)
   {
     this.userService.getUserByKey(key).subscribe(data => {
-      this.data = data;
-      this.user = this.data.user;
-      let order : any [] = this.user.orderKeys;
-      if (order[0])
+      this.user = data.user;
+      if (this.user.orderKeys[0])
       {
-        let i = order.length;
+        let i = this.user.orderKeys.length;
         while (i > 0)
-          this.getOrderByKey(order[i--]);
+          this.getOrderByKey(this.user.orderKeys[i--]);
       }
     });
   }

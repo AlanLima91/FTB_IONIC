@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { throwError as observableThrowError, Observable } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { User } from '../class/user';
 
@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   /**
-   *  Read all Users
+   *  Retrieve all Users
    *  return a table of user
    */
   getUsers(): Observable<any>
@@ -29,9 +29,9 @@ export class UserService {
    *  Read all Users and look for one user
    *  return a user
    */
-  getUserByKey(key: string): Observable<User>
+  getUserByKey(key: string): Observable<any>
   {
-    return this.http.get<User>(this.url + key);
+    return this.http.get<any>(this.url + key);
   }
 
   /**
