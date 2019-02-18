@@ -1,7 +1,7 @@
 export class User
 {
     public name:        string;
-    public order:       string[] | void;
+    public orderKeys:   any[] | void;
     public firstname:   string;
     public email:       string;
     public password:    string;
@@ -15,7 +15,7 @@ export class User
         this.email      = email;
         this.password   = password;
         this.solde      = solde;
-        this.order      = order;
+        this.orderKeys  = order;
         this.admin      = admin;
     }
 }
