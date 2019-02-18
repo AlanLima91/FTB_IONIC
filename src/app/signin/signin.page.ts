@@ -16,8 +16,6 @@ export class SigninPage implements OnInit
 
   ngOnInit()
   { 
-    console.log("MAIL@mail.fr");
-    console.log("password");
   }
 
   onSubmit(form)
@@ -33,7 +31,7 @@ export class SigninPage implements OnInit
     );
 
     this.userService.loginUser(user).subscribe(resp => {
-      console.log(resp.headers.has('x-auth'));
+      console.log(resp);
     },
     err => {
       console.log(err);
