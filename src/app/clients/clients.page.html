@@ -9,50 +9,32 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content color=success>
+<ion-content>
     <ion-button [routerLink]="['/administration']" color=dark text-uppercase expand=block margin>
       Retour
     </ion-button>
 
-    <ion-card *ngFor="let user of listUsers" color=light>
-        <ion-card-header text-center>
-          {{ user._id }}
+    <ion-card *ngFor="let user of listUsers">
+        <ion-card-header text-center color=success>
+          <ion-card-subtitle><h5>{{ user.firstname }} {{ user.name }}</h5></ion-card-subtitle>
         </ion-card-header>
-        <ion-grid fixed>
-
-          <ion-row>
-            <ion-col text-center>
-              {{ user.firstname }}
-              {{ user.name }}
-            </ion-col>
-          </ion-row>
-          
-          <ion-row margin>
-            <ion-col text-uppercase text-center>
-              Solde : {{ user.solde }}
-            </ion-col>
-          </ion-row>
-          
-          <ion-row>
-            <ion-item color=light>
-              <ion-label position=floating >Solde</ion-label>
-              <ion-input type=number></ion-input>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label position=floating>Solde Actuel : {{ user.solde }}</ion-label>
+              <ion-input type="text"></ion-input>
             </ion-item>
-          </ion-row>
-          
-          <ion-row justify-content-around>
-            <ion-col size="6" color=warning>
-              <ion-button (click)="increase()" fill=outline size=large>
+            <ion-item>
+              <ion-button (click)="increase()" expand=block size=large color=primary>
                 +
               </ion-button>
-            </ion-col>
-            <ion-col size="6" color=danger>
-              <ion-button (click)="decrease()" mode=ios fill=outline size=large>
+            </ion-item>
+            <ion-item>
+              <ion-button (click)="decrease()" expand=block size=large color=danger>
                 -
               </ion-button>
-            </ion-col>
-          </ion-row>
-
-        </ion-grid>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
       </ion-card>
 </ion-content>
