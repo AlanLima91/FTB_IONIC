@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { Menu } from '../class/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +24,9 @@ export class MenusService {
       catchError(this.handleError('getMenus', [])))
   }
 
-  getMenusByKey(key: string) : Observable<Menu>
+  getMenusByKey(key: string) : Observable<any>
   {
-    return this.http.get<Menu>(this.url + key);
+    return this.http.get<any>(this.url + key);
   }
 
   /**

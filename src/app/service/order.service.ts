@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { tap, catchError, filter } from 'rxjs/operators';
-import { Order } from '../class/order';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +15,9 @@ export class OrderService
    *  Read all Orders
    *  return a table of order
    */
-  getOrders(): Observable<Order[]>
+  getOrders(): Observable<any>
   {
-    return this.http.get<Order[]>(this.url)
+    return this.http.get<any>(this.url)
       .pipe(
         tap(data => {
           data
@@ -27,9 +26,9 @@ export class OrderService
       );
   }
 
-  getOrderByKey(key: string) : Observable<Order[]>
+  getOrderByKey(key: string) : Observable<any>
   {
-    return this.http.get<Order[]>(this.url + key)
+    return this.http.get<any>(this.url + key)
     .pipe(
       tap(data => JSON.stringify(data)),
       catchError(this.handleError('getOrderByKey', []))
@@ -40,11 +39,11 @@ export class OrderService
    *  Add a new Order to the table
    *  @param Order
    */
-  addOrder(order: Order): Observable<Order>
+  addOrder(order: any): Observable<any>
   {
-    return this.http.post<Order>(this.url, order, { responseType: 'json' }).pipe(
-      tap((product: Order) => console.log('order Added')),
-      catchError(this.handleError<Order>('addBeer')),
+    return this.http.post<any>(this.url, order, { responseType: 'json' }).pipe(
+      tap((product: any) => console.log('order Added')),
+      catchError(this.handleError<any>('addBeer')),
     );
   }
 

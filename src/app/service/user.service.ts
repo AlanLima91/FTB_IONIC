@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { User } from '../class/user';
 
 @Injectable({
   providedIn: 'root'
@@ -39,31 +38,31 @@ export class UserService {
    *  @param User
    *  @return Observable
    */
-  addUser(user: User): Observable<User>
+  addUser(user: any): Observable<any>
   {
-    return this.http.post<User>(this.url, user, {responseType: 'json'}).pipe(
-        tap((user: User) => console.log('User Added')),
-        catchError(this.handleError<User>('addUser')),
+    return this.http.post<any>(this.url, user, {responseType: 'json'}).pipe(
+        tap((user: any) => console.log('User Added')),
+        catchError(this.handleError<any>('addUser')),
       );
   }
 
-  deleteUser(key: string): Observable<User>
+  deleteUser(key: string): Observable<any>
   {
-    return this.http.delete<User>(this.url).pipe(
-      tap((user: User) => console.log('User deleted')),
-      catchError(this.handleError<User>('deleteUser')),
+    return this.http.delete<any>(this.url).pipe(
+      tap((user: any) => console.log('User deleted')),
+      catchError(this.handleError<any>('deleteUser')),
     );
   }
 
-  updateUser(key: string, user: User): Observable<User>
+  updateUser(key: string, user: any): Observable<any>
   {
-    return this.http.patch<User>(this.url + key, user).pipe(
-      tap((user: User) => console.log('User updated')),
-      catchError(this.handleError<User>('updateUser')),
+    return this.http.patch<any>(this.url + key, user).pipe(
+      tap((user: any) => console.log('User updated')),
+      catchError(this.handleError<any>('updateUser')),
     );
   }
 
-  loginUser(user: User): Observable<HttpResponse<Object>>
+  loginUser(user: any): Observable<HttpResponse<Object>>
   {
     return this.http.post<HttpResponse<Object>>(this.url + 'login', user, {
       observe: "response"
