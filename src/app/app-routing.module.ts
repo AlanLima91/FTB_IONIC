@@ -4,13 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'signin',
+    redirectTo: 'menu',
     pathMatch: 'full'
   },
-  {
-    path: 'menu',
-    loadChildren: './home/home.module#HomePageModule'
-  },
+  { path: 'menu', loadChildren: './home/home.module#HomePageModule' },
   { path: 'profil', loadChildren: './profil/profil.module#ProfilPageModule' },
   { path: 'basket', loadChildren: './basket/basket.module#BasketPageModule' },
   { path: 'administration', loadChildren: './administration/administration.module#AdministrationPageModule' },
