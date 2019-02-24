@@ -31,7 +31,7 @@ export class SigninPage implements OnInit
     );
 
     this.userService.loginUser(user).subscribe(resp => {
-      console.log(resp);
+      console.log(resp.headers.has('x-auth'));
     },
     err => {
       console.log(err);
