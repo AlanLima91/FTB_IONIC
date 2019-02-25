@@ -25,18 +25,18 @@
 
             <ion-list>
               <ion-item>
-                <ion-label position=floating color=success>Prénom : {{ data?.user?.firstname }}</ion-label>
+                <ion-label position=floating color=success>Prénom : {{ user?.firstname }}</ion-label>
                 <ion-input type=text name=firstname required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label position=floating color=success>Nom : {{ data?.user?.name }}</ion-label>
+                <ion-label position=floating color=success>Nom : {{ user?.name }}</ion-label>
                 <ion-input type=text name=name required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label color=dark>Solde : {{ data?.user?.solde }}€</ion-label>
+                <ion-label color=dark>Solde : {{ user?.solde }}€</ion-label>
               </ion-item>
               <ion-item>
-                <ion-label position=floating color=success>{{ data?.user?.email }}</ion-label>
+                <ion-label position=floating color=success>{{ user?.email }}</ion-label>
                 <ion-input type=email name=email required></ion-input>
               </ion-item>
               <ion-item>
