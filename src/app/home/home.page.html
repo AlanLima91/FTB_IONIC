@@ -28,7 +28,13 @@
             <ion-label>{{ menus.dessert }}</ion-label>
           </ion-item>
         </ion-list>
-      </ion-card-content>
 
+        <ion-item>
+          <ion-button (click)="onClick()" margin fill=outline type=submit text-uppercase expand=block color=success>
+            Ajouter au panier
+          </ion-button>
+        </ion-item>
+      </ion-card-content>
+      
     </ion-card>
 </ion-content>

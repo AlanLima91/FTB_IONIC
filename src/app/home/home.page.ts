@@ -24,4 +24,9 @@ export class HomePage {
     });
   }
 
+  onClick()
+  {
+    console.log("à finir");
+  }
+
 }
